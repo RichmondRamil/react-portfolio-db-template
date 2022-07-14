@@ -1,0 +1,159 @@
+.cubespinner-hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.stage-cube-cont {
+  width: 50%;
+  height: 100%;
+  top: -100px;
+  margin-left: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cubespinner {
+  position: absolute;
+  animation-name: spincube;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 12s;
+  transform-style: preserve-3d;
+  transform-origin: 200px 200px 0;
+  top: 300px;
+  left: 290px;
+  div {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(226, 226, 226, 0.4);
+    text-align: center;
+    font-size: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 0px #7c7c7c;
+  }
+
+  .face1 {
+    transform: translateZ(200px);
+    color: #dd0031;
+  }
+  .face2 {
+    transform: rotateY(90deg) translateZ(200px);
+    color: #f06529;
+  }
+  .face3 {
+    transform: rotateY(90deg) rotateX(90deg) translateZ(200px);
+    color: #28a4d9;
+  }
+  .face4 {
+    transform: rotateY(180deg) rotateZ(90deg) translateZ(200px);
+    color: #5ed4f4;
+  }
+  .face5 {
+    transform: rotateY(-90deg) rotateZ(90deg) translateZ(200px);
+    color: #efd81d;
+  }
+  .face6 {
+    transform: rotateX(-90deg) translateZ(200px);
+    color: #ec4d28;
+  }
+}
+
+.menu-hidden {
+  display: none;
+  visibility: hidden;
+}
+.menu {
+  display: block;
+  visibility: visible;
+  top: 100px;
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu .div li {
+  position: absolute;
+  top: 210px;
+  left: 0;
+  list-style-type: none;
+  transform-origin: 250px;
+  transition: 0.5s;
+  transition-delay: calc(0.1s * var(--i));
+  transform: rotate(0deg) translateX(120px);
+  z-index: 1000;
+}
+
+.menu .div li i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  left: -40px;
+  background: #fff;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+  color: #111;
+  transition: 0.5s;
+  font-size: 30px;
+}
+.toggle {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+  font-size: 2em;
+  transition: transform 10s;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    margin: 20px;
+  }
+}
+.menu.active .div .toggle {
+  transform: rotate(-315deg);
+}
+.menu.active .div li {
+  left: 0;
+  transform: rotate(calc(360deg / -8 * var(--i)));
+}
+
+@keyframes spincube {
+  from,
+  to {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  16% {
+    transform: rotateY(-90deg);
+  }
+  33% {
+    transform: rotateY(-90deg) rotateZ(90deg);
+  }
+  50% {
+    transform: rotateY(-180deg) rotateZ(90deg);
+  }
+  66% {
+    transform: rotateY(-270deg) rotateX(90deg);
+  }
+  83% {
+    transform: rotateX(90deg);
+  }
+}
